@@ -23,6 +23,7 @@ class MapViewController: UIViewController {
     var zoomLevel       : Float = 15.0
     
     var ChennaiCurentLocation = "13.06869 + 80.25692"
+    var AddressValues = ""
     
     // An array to hold the list of likely places.
     var likelyPlaces    : [GMSPlace] = []
@@ -171,6 +172,7 @@ extension MapViewController: CLLocationManagerDelegate {
             
             getLogationAddress(lat: location.coordinate.latitude, long: location.coordinate.longitude) { (address) in
                 print(address)
+                self.AddressValues = address
             }
             
             // marker.title = address
@@ -212,7 +214,7 @@ extension MapViewController: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
         
         let customInfoWindow = Bundle.main.loadNibNamed("GooglePlaceMarkerInfo", owner: self, options: nil)?[0] as! GooglePlaceMarkerInfo
-        customInfoWindow.nameLabel.text = "HI Bala Murugan"
+        customInfoWindow.nameLabel.text = self.AddressValues
         customInfoWindow.placePhoto.image = UIImage(named: "Application-icon")!
         return customInfoWindow
     }
