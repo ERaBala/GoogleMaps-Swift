@@ -13,7 +13,7 @@ import CoreLocation
 
 class MapViewController: UIViewController {
     
-    @IBOutlet weak var MapView: UIView!
+    @IBOutlet weak var LoadingTextLabel: UILabel!
     
     var locationManager = CLLocationManager()
     
@@ -21,6 +21,8 @@ class MapViewController: UIViewController {
     var mapUIView       : GMSMapView!
     var placesClient    : GMSPlacesClient!
     var zoomLevel       : Float = 15.0
+    
+    var ChennaiCurentLocation = "13.06869 + 80.25692"
     
     // An array to hold the list of likely places.
     var likelyPlaces    : [GMSPlace] = []
@@ -37,6 +39,8 @@ class MapViewController: UIViewController {
         
         // Set Map as Default Location
         setDefaultMapLocation()
+        
+        LoadingTextLabel.animateType(newText: "Loading ...", characterDelay: 0.8)
         
     }
     
@@ -133,8 +137,25 @@ extension MapViewController: CLLocationManagerDelegate {
         
         let camera = GMSCameraPosition.camera(withLatitude  : location.coordinate.latitude,
                                               longitude     : location.coordinate.longitude,
-                                              zoom          : zoomLevel)
+                                              zoom          : zoomLevel,
+                                              bearing       : 30,
+                                              viewingAngle  : 40)
         
+        // MANUAL DIRECTIONS START
+        
+        let path = GMSMutablePath()
+        path.addLatitude(13.06677, longitude:80.25405) // Sydney
+        path.addLatitude(13.07324, longitude:80.26092) // Fiji
+        path.addLatitude(13.06819, longitude:80.27156) // Hawaii
+        path.addLatitude(13.06196, longitude:80.26293) // Mountain View
+        
+        let polyline = GMSPolyline(path: path)
+        polyline.strokeColor = .blue
+        polyline.strokeWidth = 5.0
+        polyline.map = mapUIView
+        
+        // MANUAL DIRECTIONS END
+
         if mapUIView.isHidden {
             
             mapUIView.isHidden = false
@@ -192,8 +213,11 @@ extension MapViewController: GMSMapViewDelegate {
         
         let customInfoWindow = Bundle.main.loadNibNamed("GooglePlaceMarkerInfo", owner: self, options: nil)?[0] as! GooglePlaceMarkerInfo
         customInfoWindow.nameLabel.text = "HI Bala Murugan"
-        customInfoWindow.placePhoto.image = UIImage(named: "afternoon")!
+        customInfoWindow.placePhoto.image = UIImage(named: "Application-icon")!
         return customInfoWindow
     }
     
 }
+
+// CHECK FOR DIRECTIONS
+// https://github.com/balitax/Google-Maps-Direction

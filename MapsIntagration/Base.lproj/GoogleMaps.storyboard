@@ -145,10 +145,13 @@
                             <constraint firstItem="6Tz-dZ-T1i" firstAttribute="centerX" secondItem="Tdu-eO-xhW" secondAttribute="centerX" id="cPx-ji-YCj"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="LoadingTextLabel" destination="6Tz-dZ-T1i" id="42q-xk-283"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IiX-yK-rbP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="920.79999999999995" y="121.88905547226388"/>
+            <point key="canvasLocation" x="962" y="78"/>
         </scene>
     </scenes>
 </document>

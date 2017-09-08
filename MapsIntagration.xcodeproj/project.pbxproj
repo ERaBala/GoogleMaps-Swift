@@ -24,6 +24,7 @@
 		EE1F8C221F612DBE001D473C /* RouteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1F8C211F612DBE001D473C /* RouteListViewController.swift */; };
 		EE1F8C241F613327001D473C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE1F8C231F613327001D473C /* CoreLocation.framework */; };
 		EEDA46281F62A33B00B14CAC /* MapMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDA46271F62A33B00B14CAC /* MapMainViewController.swift */; };
+		EEDA46311F62B96D00B14CAC /* UILabel+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDA46301F62B96D00B14CAC /* UILabel+Helper.swift */; };
 		F531586188B5E94B5C246B0E /* Pods_MapsIntagration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481F93682692724B67FF4A0E /* Pods_MapsIntagration.framework */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +76,7 @@
 		EE1F8C211F612DBE001D473C /* RouteListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RouteListViewController.swift; path = Class/MapViewController/RouteListViewController.swift; sourceTree = "<group>"; };
 		EE1F8C231F613327001D473C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		EEDA46271F62A33B00B14CAC /* MapMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapMainViewController.swift; path = Class/MapViewController/MapMainViewController.swift; sourceTree = "<group>"; };
+		EEDA46301F62B96D00B14CAC /* UILabel+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UILabel+Helper.swift"; path = "HelperClass/UILabel+Helper.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +165,7 @@
 		EE1F8BE11F6108A9001D473C /* MapsIntagration */ = {
 			isa = PBXGroup;
 			children = (
+				EEDA462B1F62B5F100B14CAC /* Extension */,
 				EE1F8C101F610F39001D473C /* AppDelegate */,
 				EE1F8C131F610FC6001D473C /* Class */,
 				EE1F8C111F610F5D001D473C /* Assets */,
@@ -244,6 +247,14 @@
 				EE0FD3051F627B0300E3A123 /* GooglePlaceMarkerInfo.swift */,
 			);
 			name = Googlemaps;
+			sourceTree = "<group>";
+		};
+		EEDA462B1F62B5F100B14CAC /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				EEDA46301F62B96D00B14CAC /* UILabel+Helper.swift */,
+			);
+			name = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -543,6 +554,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEDA46311F62B96D00B14CAC /* UILabel+Helper.swift in Sources */,
 				EEDA46281F62A33B00B14CAC /* MapMainViewController.swift in Sources */,
 				EE1F8C151F6110A5001D473C /* LoginViewController.swift in Sources */,
 				EE0FD3061F627B0300E3A123 /* GooglePlaceMarkerInfo.swift in Sources */,

@@ -14,13 +14,19 @@ import GooglePlaces
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var googleAPIKey : String = ""
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        
+        if let path = Bundle.main.path(forResource: "IgnorePlist", ofType: "plist") {
+            if let dict = NSDictionary(contentsOfFile: path) as? Dictionary<String, AnyObject> {
+                googleAPIKey = dict["GOOGLE_MAP_API_KEY"] as! String
+            }
+        }
+        
         //google Service API KEYs
-        let googleAPIKey = "AIzaSyAEw0LtYNIYgcWn-uiHuKg2y1lqUxIDKOw"
         
         GMSServices.provideAPIKey(googleAPIKey)
         GMSPlacesClient.provideAPIKey(googleAPIKey)
