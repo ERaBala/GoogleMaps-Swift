@@ -23,6 +23,7 @@
 		EE1F8C201F612C1F001D473C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1F8C1F1F612C1F001D473C /* MapViewController.swift */; };
 		EE1F8C221F612DBE001D473C /* RouteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1F8C211F612DBE001D473C /* RouteListViewController.swift */; };
 		EE1F8C241F613327001D473C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE1F8C231F613327001D473C /* CoreLocation.framework */; };
+		EEB1FF3E1F63E67100ED190D /* Location+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB1FF3D1F63E67100ED190D /* Location+Helper.swift */; };
 		EEDA46281F62A33B00B14CAC /* MapMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDA46271F62A33B00B14CAC /* MapMainViewController.swift */; };
 		EEDA46311F62B96D00B14CAC /* UILabel+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDA46301F62B96D00B14CAC /* UILabel+Helper.swift */; };
 		F531586188B5E94B5C246B0E /* Pods_MapsIntagration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481F93682692724B67FF4A0E /* Pods_MapsIntagration.framework */; };
@@ -75,6 +76,7 @@
 		EE1F8C1F1F612C1F001D473C /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = Class/MapViewController/MapViewController.swift; sourceTree = "<group>"; };
 		EE1F8C211F612DBE001D473C /* RouteListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RouteListViewController.swift; path = Class/MapViewController/RouteListViewController.swift; sourceTree = "<group>"; };
 		EE1F8C231F613327001D473C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		EEB1FF3D1F63E67100ED190D /* Location+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Location+Helper.swift"; path = "HelperClass/Location+Helper.swift"; sourceTree = "<group>"; };
 		EEDA46271F62A33B00B14CAC /* MapMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapMainViewController.swift; path = Class/MapViewController/MapMainViewController.swift; sourceTree = "<group>"; };
 		EEDA46301F62B96D00B14CAC /* UILabel+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UILabel+Helper.swift"; path = "HelperClass/UILabel+Helper.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -232,9 +234,9 @@
 		EE1F8C161F6110BD001D473C /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				EE1F8BEB1F6108A9001D473C /* LaunchScreen.storyboard */,
 				EE1F8BE61F6108A9001D473C /* Main.storyboard */,
 				EE1F8C191F61117E001D473C /* GoogleMaps.storyboard */,
+				EE1F8BEB1F6108A9001D473C /* LaunchScreen.storyboard */,
 			);
 			name = Storyboard;
 			sourceTree = "<group>";
@@ -253,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				EEDA46301F62B96D00B14CAC /* UILabel+Helper.swift */,
+				EEB1FF3D1F63E67100ED190D /* Location+Helper.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -457,9 +460,14 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MapsIntagration/Pods-MapsIntagration-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -558,6 +566,7 @@
 				EEDA46281F62A33B00B14CAC /* MapMainViewController.swift in Sources */,
 				EE1F8C151F6110A5001D473C /* LoginViewController.swift in Sources */,
 				EE0FD3061F627B0300E3A123 /* GooglePlaceMarkerInfo.swift in Sources */,
+				EEB1FF3E1F63E67100ED190D /* Location+Helper.swift in Sources */,
 				EE1F8C201F612C1F001D473C /* MapViewController.swift in Sources */,
 				EE1F8C221F612DBE001D473C /* RouteListViewController.swift in Sources */,
 				EE1F8BE31F6108A9001D473C /* AppDelegate.swift in Sources */,

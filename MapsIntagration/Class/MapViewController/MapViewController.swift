@@ -10,6 +10,13 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 import CoreLocation
+import Alamofire
+import SwiftyJSON
+
+enum Location {
+    case startLocation
+    case destinationLocation
+}
 
 class MapViewController: UIViewController {
     
@@ -24,12 +31,7 @@ class MapViewController: UIViewController {
     
     var ChennaiCurentLocation = "13.06869 + 80.25692"
     var AddressValues = ""
-    
-    // An array to hold the list of likely places.
-    var likelyPlaces    : [GMSPlace] = []
-    
-    // The currently selected place.
-    var selectedPlace   : GMSPlace?
+    let NCName = Notification.Name(rawValue:"NCCoordinates")
     
     
     override func viewDidLoad() {
@@ -41,30 +43,32 @@ class MapViewController: UIViewController {
         // Set Map as Default Location
         setDefaultMapLocation()
         
-        LoadingTextLabel.animateType(newText: "Loading ...", characterDelay: 0.8)
+        placesClient = GMSPlacesClient.shared()
+        LoadingTextLabel.animateType(newText: "Loading ...", characterDelay: 1.0)
+        NotificationCenter.default.addObserver(forName:NCName, object:nil, queue:nil, using:catchNotification)
         
     }
     
     func CLLocationMethod() {
         
-        locationManager = CLLocationManager()
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestAlwaysAuthorization()
-        locationManager.distanceFilter = 50
         locationManager.startUpdatingLocation()
-        locationManager.delegate = self
+        locationManager.requestAlwaysAuthorization()
+        locationManager.startMonitoringSignificantLocationChanges()
+        locationManager.delegate        = self
+        locationManager.distanceFilter  = 50
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
         
-        placesClient = GMSPlacesClient.shared()
     }
+    
     
     func setDefaultMapLocation() {
         
-        let camera = GMSCameraPosition.camera(withLatitude: 0.0, longitude: 0.0, zoom: zoomLevel)
+        let camera = GMSCameraPosition.camera(withLatitude: 13.06869, longitude: 80.25692, zoom: zoomLevel)
         
         mapUIView = GMSMapView.map(withFrame: view.bounds, camera: camera)
+        mapUIView.delegate = self
         mapUIView.settings.myLocationButton = true
         mapUIView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        mapUIView.delegate = self
         // mapUIView.isMyLocationEnabled = true  // get Blue Circul in ur location
         
         // Add the map to the view, hide it until we've got a location update.
@@ -119,14 +123,86 @@ class MapViewController: UIViewController {
         })
     }
     
-    
-    func getAddress(lat : String, handler: (String) -> Void)
-    {
-        handler("Emty string But Some value is Return \(lat)")
+    func catchNotification(notification:Notification) -> Void {
+        print("Catch notification")
+        
+        guard let userInfo = notification.userInfo,
+              var origen        = userInfo["origen"]       as? String,
+              var destination   = userInfo["destination"]  as? String else {
+                
+                print("No userInfo found in notification")
+                return
+        }
+        
+        print(origen, destination)
+        
+        
+        origen      = origen.replacingOccurrences(of: " ", with: "+")
+        destination = destination.replacingOccurrences(of: " ", with: "+")
+        
+        let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origen)&destination=\(destination)&mode=driving"
+        
+        Alamofire.request(url).responseJSON { response in
+            
+            print(response.request as Any)  // original URL request
+            print(response.response as Any) // HTTP URL response
+            print(response.data as Any)     // server data
+            print(response.result as Any)   // result of response serialization
+            
+            let json = JSON(data: response.data!)
+            let routes = json["routes"].arrayValue
+            
+            // print route using Polyline
+            for route in routes
+            {
+                let routeOverviewPolyline = route["overview_polyline"].dictionary
+                let points = routeOverviewPolyline?["points"]?.stringValue
+                let path = GMSPath.init(fromEncodedPath: points!)
+                let polyline = GMSPolyline.init(path: path)
+                polyline.strokeWidth = 4
+                polyline.strokeColor = UIColor.red
+                polyline.map = self.mapUIView
+            }
+            
+        }
     }
     
-    
-    
+    func drawPath(startLocation: CLLocation, endLocation: CLLocation)
+    {
+        //		let origin = "\(startLocation.coordinate.latitude),\(startLocation.coordinate.longitude)"
+        //		let destination = "\(endLocation.coordinate.latitude),\(endLocation.coordinate.longitude)"
+        //
+        let origen1 = "ChennaiCentral"
+        let destiny = "triplicane"
+        
+        let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origen1)&destination=\(destiny)&mode=driving"
+        
+        Alamofire.request(url).responseJSON { response in
+            
+            print(response.request as Any)  // original URL request
+            print(response.response as Any) // HTTP URL response
+            print(response.data as Any)     // server data
+            print(response.result as Any)   // result of response serialization
+            
+            let json = JSON(data: response.data!)
+            let routes = json["routes"].arrayValue
+            
+            // print route using Polyline
+            for route in routes
+            {
+                let routeOverviewPolyline = route["overview_polyline"].dictionary
+                let points = routeOverviewPolyline?["points"]?.stringValue
+                let path = GMSPath.init(fromEncodedPath: points!)
+                let polyline = GMSPolyline.init(path: path)
+                polyline.strokeWidth = 4
+                polyline.strokeColor = UIColor.red
+//                polyline.map = self.googleMaps
+            }
+            
+        }
+    }
+
+ 
 }
 
 extension MapViewController: CLLocationManagerDelegate {
@@ -136,75 +212,53 @@ extension MapViewController: CLLocationManagerDelegate {
         let location: CLLocation = locations.last!
         print("Location: \(location)")
         
-        let camera = GMSCameraPosition.camera(withLatitude  : location.coordinate.latitude,
-                                              longitude     : location.coordinate.longitude,
-                                              zoom          : zoomLevel,
-                                              bearing       : 30,
-                                              viewingAngle  : 40)
+        let camera = GMSCameraPosition.camera(withLatitude : location.coordinate.latitude, longitude : location.coordinate.longitude, zoom : zoomLevel, bearing: 30, viewingAngle : 40)
         
-        // MANUAL DIRECTIONS START
-        
-        let path = GMSMutablePath()
-        path.addLatitude(13.06677, longitude:80.25405) // Sydney
-        path.addLatitude(13.07324, longitude:80.26092) // Fiji
-        path.addLatitude(13.06819, longitude:80.27156) // Hawaii
-        path.addLatitude(13.06196, longitude:80.26293) // Mountain View
-        
-        let polyline = GMSPolyline(path: path)
-        polyline.strokeColor = .blue
-        polyline.strokeWidth = 5.0
-        polyline.map = mapUIView
-        
-        // MANUAL DIRECTIONS END
-
         if mapUIView.isHidden {
             
-            mapUIView.isHidden = false
-            mapUIView.camera = camera
-            mapUIView.mapType = .satellite
+            mapUIView.isHidden  = false
+            mapUIView.camera    = camera
+            mapUIView.mapType   = .satellite
             
-            let marker = GMSMarker()
+            let marker      = GMSMarker()
+            marker.map      = mapUIView
+            marker.icon     = UIImage(named: "Map-Pin")!
             marker.position = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-            
-            getAddress(lat: "0.0 lat") { (address) in
-                print(address)
-            }
-            
+
             getLogationAddress(lat: location.coordinate.latitude, long: location.coordinate.longitude) { (address) in
-                print(address)
                 self.AddressValues = address
             }
-            
-            // marker.title = address
-            // marker.iconView = customInfoWindow
-            // marker.snippet = "Australia"
-            marker.map = mapUIView
-            
+
         } else {
             mapUIView.animate(to: camera)
         }
     }
+    
     
     // Handle authorization for the location manager.
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
         case .restricted:
             print("Location access was restricted.")
+            
         case .denied:
             print("User denied access to location.")
-            // Display the map using the default location.
             mapUIView.isHidden = false
+            
         case .notDetermined:
             print("Location status not determined.")
+            
         case .authorizedAlways: fallthrough
+            
         case .authorizedWhenInUse:
             print("Location status is OK.")
         }
     }
     
+    
     // Handle location manager errors.
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        locationManager.stopUpdatingLocation()
+        // locationManager.stopUpdatingLocation()
         print("Error: \(error)")
     }
 }
@@ -221,5 +275,3 @@ extension MapViewController: GMSMapViewDelegate {
     
 }
 
-// CHECK FOR DIRECTIONS
-// https://github.com/balitax/Google-Maps-Direction

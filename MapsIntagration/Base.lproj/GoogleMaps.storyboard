@@ -65,6 +65,9 @@
                                         <rect key="frame" x="63" y="106" width="216" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Submit"/>
+                                        <connections>
+                                            <action selector="ShowDirections:" destination="dAi-SX-VkP" eventType="touchUpInside" id="xj8-z2-1ad"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -72,6 +75,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="DestinationTextField" destination="AiF-Ob-tdg" id="zia-h5-rla"/>
+                        <outlet property="OrigenTextField" destination="YPV-ey-Ur0" id="EbF-Xw-NHN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AEQ-U3-Rvy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -131,6 +138,10 @@
         <scene sceneID="tA2-os-TaR">
             <objects>
                 <viewController id="g0R-Hf-cYG" customClass="MapViewController" customModule="MapsIntagration" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wcb-ix-Y96"/>
+                        <viewControllerLayoutGuide type="bottom" id="yNq-5B-QR3"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Tdu-eO-xhW">
                         <rect key="frame" x="0.0" y="0.0" width="343" height="435"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
