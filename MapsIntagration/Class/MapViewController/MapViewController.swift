@@ -13,6 +13,7 @@ import CoreLocation
 import Alamofire
 import SwiftyJSON
 
+
 enum Location {
     case startLocation
     case destinationLocation
@@ -29,8 +30,8 @@ class MapViewController: UIViewController {
     var placesClient    : GMSPlacesClient!
     var zoomLevel       : Float = 15.0
     
-    var ChennaiCurentLocation = "13.06869 + 80.25692"
-    var AddressValues = ""
+    var AddressValues           = ""
+    var ChennaiCurentLocation   = "13.06869 + 80.25692"
     let NCName = Notification.Name(rawValue:"NCCoordinates")
     
     
@@ -54,10 +55,10 @@ class MapViewController: UIViewController {
         locationManager.startUpdatingLocation()
         locationManager.requestAlwaysAuthorization()
         locationManager.startMonitoringSignificantLocationChanges()
+        
         locationManager.delegate        = self
         locationManager.distanceFilter  = 50
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        
     }
     
     
@@ -69,7 +70,7 @@ class MapViewController: UIViewController {
         mapUIView.delegate = self
         mapUIView.settings.myLocationButton = true
         mapUIView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        // mapUIView.isMyLocationEnabled = true  // get Blue Circul in ur location
+        //mapUIView.isMyLocationEnabled = true  // get Blue Circul in ur location
         
         // Add the map to the view, hide it until we've got a location update.
         view.addSubview(mapUIView)
@@ -123,19 +124,20 @@ class MapViewController: UIViewController {
         })
     }
     
+    
     func catchNotification(notification:Notification) -> Void {
-        print("Catch notification")
+        
+        setDefaultMapLocation()
         
         guard let userInfo = notification.userInfo,
-              var origen        = userInfo["origen"]       as? String,
-              var destination   = userInfo["destination"]  as? String else {
+            var origen        = userInfo["origen"]       as? String,
+            var destination   = userInfo["destination"]  as? String else {
                 
                 print("No userInfo found in notification")
                 return
         }
         
         print(origen, destination)
-        
         
         origen      = origen.replacingOccurrences(of: " ", with: "+")
         destination = destination.replacingOccurrences(of: " ", with: "+")
@@ -158,6 +160,7 @@ class MapViewController: UIViewController {
                 let routeOverviewPolyline = route["overview_polyline"].dictionary
                 let points = routeOverviewPolyline?["points"]?.stringValue
                 let path = GMSPath.init(fromEncodedPath: points!)
+                
                 let polyline = GMSPolyline.init(path: path)
                 polyline.strokeWidth = 4
                 polyline.strokeColor = UIColor.red
@@ -166,43 +169,6 @@ class MapViewController: UIViewController {
             
         }
     }
-    
-    func drawPath(startLocation: CLLocation, endLocation: CLLocation)
-    {
-        //		let origin = "\(startLocation.coordinate.latitude),\(startLocation.coordinate.longitude)"
-        //		let destination = "\(endLocation.coordinate.latitude),\(endLocation.coordinate.longitude)"
-        //
-        let origen1 = "ChennaiCentral"
-        let destiny = "triplicane"
-        
-        let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origen1)&destination=\(destiny)&mode=driving"
-        
-        Alamofire.request(url).responseJSON { response in
-            
-            print(response.request as Any)  // original URL request
-            print(response.response as Any) // HTTP URL response
-            print(response.data as Any)     // server data
-            print(response.result as Any)   // result of response serialization
-            
-            let json = JSON(data: response.data!)
-            let routes = json["routes"].arrayValue
-            
-            // print route using Polyline
-            for route in routes
-            {
-                let routeOverviewPolyline = route["overview_polyline"].dictionary
-                let points = routeOverviewPolyline?["points"]?.stringValue
-                let path = GMSPath.init(fromEncodedPath: points!)
-                let polyline = GMSPolyline.init(path: path)
-                polyline.strokeWidth = 4
-                polyline.strokeColor = UIColor.red
-//                polyline.map = self.googleMaps
-            }
-            
-        }
-    }
-
- 
 }
 
 extension MapViewController: CLLocationManagerDelegate {
@@ -218,22 +184,21 @@ extension MapViewController: CLLocationManagerDelegate {
             
             mapUIView.isHidden  = false
             mapUIView.camera    = camera
-            mapUIView.mapType   = .satellite
+            mapUIView.mapType   = .normal
             
             let marker      = GMSMarker()
             marker.map      = mapUIView
             marker.icon     = UIImage(named: "Map-Pin")!
             marker.position = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-
+            
             getLogationAddress(lat: location.coordinate.latitude, long: location.coordinate.longitude) { (address) in
                 self.AddressValues = address
             }
-
+            
         } else {
             mapUIView.animate(to: camera)
         }
     }
-    
     
     // Handle authorization for the location manager.
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -255,14 +220,14 @@ extension MapViewController: CLLocationManagerDelegate {
         }
     }
     
-    
     // Handle location manager errors.
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        // locationManager.stopUpdatingLocation()
+        //locationManager.stopUpdatingLocation()
         print("Error: \(error)")
     }
 }
 
+// For custom Pin Info View
 extension MapViewController: GMSMapViewDelegate {
     
     func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {

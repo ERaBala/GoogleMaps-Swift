@@ -337,6 +337,7 @@
 				TargetAttributes = {
 					EE1F8BDE1F6108A9001D473C = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 878N6LBXDT;
 						ProvisioningStyle = Automatic;
 					};
 					EE1F8BF21F6108AA001D473C = {
@@ -462,11 +463,15 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MapsIntagration/Pods-MapsIntagration-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -733,7 +738,9 @@
 			baseConfigurationReference = 0CE55DFF8F298F8EBC47C968 /* Pods-MapsIntagration.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 878N6LBXDT;
 				INFOPLIST_FILE = MapsIntagration/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = omniprotech.com.MapsIntagration;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -746,7 +753,9 @@
 			baseConfigurationReference = D0568C35345637B56758FB7E /* Pods-MapsIntagration.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 878N6LBXDT;
 				INFOPLIST_FILE = MapsIntagration/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = omniprotech.com.MapsIntagration;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -33,6 +33,7 @@ class MapMainViewController: UIViewController {
             print("Enter the Text field Values")
             return
         }
+        
         NotificationCenter.default.post(name:NCName, object: nil, userInfo:["origen":origen, "destination":destination])
     }
     

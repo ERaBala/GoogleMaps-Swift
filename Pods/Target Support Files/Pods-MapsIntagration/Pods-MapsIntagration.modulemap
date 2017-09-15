@@ -1,0 +1,6 @@
+framework module Pods_MapsIntagration {
+  umbrella header "Pods-MapsIntagration-umbrella.h"
+
+  export *
+  module * { export * }
+}

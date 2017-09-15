@@ -30,7 +30,7 @@
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fWa-x8-FmC">
-                                <rect key="frame" x="16" y="72" width="343" height="144"/>
+                                <rect key="frame" x="16" y="72" width="343" height="130"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="From  :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5tF-J7-Fz8">
@@ -62,7 +62,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ICb-L5-bMY">
-                                        <rect key="frame" x="63" y="106" width="216" height="30"/>
+                                        <rect key="frame" x="63" y="92" width="216" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Submit"/>
                                         <connections>
@@ -88,7 +88,7 @@
         <scene sceneID="Sui-cK-VNc">
             <objects>
                 <navigationController id="5K2-qR-J08" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="dck-hf-XOf">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dck-hf-XOf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -132,7 +132,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QZd-Zd-C7g" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-695.20000000000005" y="17.541229385307346"/>
+            <point key="canvasLocation" x="-649" y="18"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="tA2-os-TaR">
@@ -167,7 +167,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IiX-yK-rbP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="962" y="78"/>
+            <point key="canvasLocation" x="953" y="122"/>
         </scene>
     </scenes>
 </document>
