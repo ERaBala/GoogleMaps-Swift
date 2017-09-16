@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E3656971F6CE67500B3BA64 /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3656951F6CE67500B3BA64 /* Connectivity.swift */; };
+		0E3656981F6CE67500B3BA64 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3656961F6CE67500B3BA64 /* Constants.swift */; };
+		0E36569C1F6CE71100B3BA64 /* ApplicationNetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E36569A1F6CE71100B3BA64 /* ApplicationNetworkHandler.swift */; };
+		0E36569D1F6CE71100B3BA64 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E36569B1F6CE71100B3BA64 /* NetworkManager.swift */; };
+		0E3656A21F6CEA4700B3BA64 /* TripListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3656A11F6CEA4700B3BA64 /* TripListViewModel.swift */; };
+		0E3656A71F6CEAC500B3BA64 /* TripList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3656A61F6CEAC500B3BA64 /* TripList.swift */; };
+		0E67AEB31F6BEDA8001D117B /* RouteListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E67AEB11F6BEDA8001D117B /* RouteListTableViewCell.swift */; };
+		0E67AEB41F6BEDA8001D117B /* RouteListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E67AEB21F6BEDA8001D117B /* RouteListTableViewCell.xib */; };
 		2D0CFB7432714E7E1D9CDE00 /* Pods_MapsIntagrationUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88259F99416BAEDA62723791 /* Pods_MapsIntagrationUITests.framework */; };
 		6C908F9257C5EC83F87D2D69 /* Pods_MapsIntagrationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C6EE630675A8227A36C5B09 /* Pods_MapsIntagrationTests.framework */; };
 		EE0FD3041F6279ED00E3A123 /* GooglePlaceMarkerInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE0FD3031F6279ED00E3A123 /* GooglePlaceMarkerInfo.xib */; };
@@ -26,6 +34,9 @@
 		EEB1FF3E1F63E67100ED190D /* Location+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB1FF3D1F63E67100ED190D /* Location+Helper.swift */; };
 		EEDA46281F62A33B00B14CAC /* MapMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDA46271F62A33B00B14CAC /* MapMainViewController.swift */; };
 		EEDA46311F62B96D00B14CAC /* UILabel+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDA46301F62B96D00B14CAC /* UILabel+Helper.swift */; };
+		EEE75F3F1F6BAC7D005667A9 /* IBDButton+Design.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE75F3E1F6BAC7D005667A9 /* IBDButton+Design.swift */; };
+		EEE75F411F6BAD5A005667A9 /* IBDTextField+Design.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE75F401F6BAD5A005667A9 /* IBDTextField+Design.swift */; };
+		EEE75F431F6BB185005667A9 /* UIColor+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE75F421F6BB185005667A9 /* UIColor+Helper.swift */; };
 		F531586188B5E94B5C246B0E /* Pods_MapsIntagration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481F93682692724B67FF4A0E /* Pods_MapsIntagration.framework */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +61,14 @@
 		05BFF8D14A1861792BF7DDA7 /* Pods-MapsIntagrationUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapsIntagrationUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MapsIntagrationUITests/Pods-MapsIntagrationUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		0C6EE630675A8227A36C5B09 /* Pods_MapsIntagrationTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MapsIntagrationTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CE55DFF8F298F8EBC47C968 /* Pods-MapsIntagration.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapsIntagration.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MapsIntagration/Pods-MapsIntagration.debug.xcconfig"; sourceTree = "<group>"; };
+		0E3656951F6CE67500B3BA64 /* Connectivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Connectivity.swift; path = Utilities/Connectivity.swift; sourceTree = "<group>"; };
+		0E3656961F6CE67500B3BA64 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Utilities/Constants.swift; sourceTree = "<group>"; };
+		0E36569A1F6CE71100B3BA64 /* ApplicationNetworkHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApplicationNetworkHandler.swift; path = NetworkManager/ApplicationNetworkHandler.swift; sourceTree = "<group>"; };
+		0E36569B1F6CE71100B3BA64 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkManager.swift; path = NetworkManager/NetworkManager.swift; sourceTree = "<group>"; };
+		0E3656A11F6CEA4700B3BA64 /* TripListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TripListViewModel.swift; path = ViewModel/TripListViewModel.swift; sourceTree = "<group>"; };
+		0E3656A61F6CEAC500B3BA64 /* TripList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TripList.swift; path = View/TripList.swift; sourceTree = "<group>"; };
+		0E67AEB11F6BEDA8001D117B /* RouteListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteListTableViewCell.swift; sourceTree = "<group>"; };
+		0E67AEB21F6BEDA8001D117B /* RouteListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RouteListTableViewCell.xib; sourceTree = "<group>"; };
 		2B98293B744EE81CE8CB462B /* Pods-MapsIntagrationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapsIntagrationTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MapsIntagrationTests/Pods-MapsIntagrationTests.debug.xcconfig"; sourceTree = "<group>"; };
 		481F93682692724B67FF4A0E /* Pods_MapsIntagration.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MapsIntagration.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AE7A68B9F4D5C040CC7D368 /* Pods-MapsIntagrationUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapsIntagrationUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MapsIntagrationUITests/Pods-MapsIntagrationUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -79,6 +98,9 @@
 		EEB1FF3D1F63E67100ED190D /* Location+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Location+Helper.swift"; path = "HelperClass/Location+Helper.swift"; sourceTree = "<group>"; };
 		EEDA46271F62A33B00B14CAC /* MapMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapMainViewController.swift; path = Class/MapViewController/MapMainViewController.swift; sourceTree = "<group>"; };
 		EEDA46301F62B96D00B14CAC /* UILabel+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UILabel+Helper.swift"; path = "HelperClass/UILabel+Helper.swift"; sourceTree = "<group>"; };
+		EEE75F3E1F6BAC7D005667A9 /* IBDButton+Design.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "IBDButton+Design.swift"; path = "IBDesignable/IBDButton+Design.swift"; sourceTree = "<group>"; };
+		EEE75F401F6BAD5A005667A9 /* IBDTextField+Design.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "IBDTextField+Design.swift"; path = "IBDesignable/IBDTextField+Design.swift"; sourceTree = "<group>"; };
+		EEE75F421F6BB185005667A9 /* UIColor+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+Helper.swift"; path = "HelperClass/UIColor+Helper.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +132,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E3656941F6CE64E00B3BA64 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				0E3656951F6CE67500B3BA64 /* Connectivity.swift */,
+				0E3656961F6CE67500B3BA64 /* Constants.swift */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		0E3656991F6CE6AD00B3BA64 /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				0E36569A1F6CE71100B3BA64 /* ApplicationNetworkHandler.swift */,
+				0E36569B1F6CE71100B3BA64 /* NetworkManager.swift */,
+			);
+			name = NetworkManager;
+			sourceTree = "<group>";
+		};
+		0E36569E1F6CE9C600B3BA64 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0E3656A11F6CEA4700B3BA64 /* TripListViewModel.swift */,
+			);
+			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		0E3656A31F6CEA6900B3BA64 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0E3656A61F6CEAC500B3BA64 /* TripList.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		0E67AEB51F6BEDB1001D117B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				0E67AEB11F6BEDA8001D117B /* RouteListTableViewCell.swift */,
+				0E67AEB21F6BEDA8001D117B /* RouteListTableViewCell.xib */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
 		B25E8B021E31A4CEB65B556D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,8 +232,13 @@
 		EE1F8BE11F6108A9001D473C /* MapsIntagration */ = {
 			isa = PBXGroup;
 			children = (
-				EEDA462B1F62B5F100B14CAC /* Extension */,
 				EE1F8C101F610F39001D473C /* AppDelegate */,
+				EEE75F3D1F6BAA2C005667A9 /* IBDesignable */,
+				EEDA462B1F62B5F100B14CAC /* Extension */,
+				0E3656941F6CE64E00B3BA64 /* Utilities */,
+				0E3656991F6CE6AD00B3BA64 /* NetworkManager */,
+				0E3656A31F6CEA6900B3BA64 /* View */,
+				0E36569E1F6CE9C600B3BA64 /* ViewModel */,
 				EE1F8C131F610FC6001D473C /* Class */,
 				EE1F8C111F610F5D001D473C /* Assets */,
 				EE1F8C121F610F6F001D473C /* Support_File */,
@@ -224,6 +294,7 @@
 		EE1F8C131F610FC6001D473C /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				0E67AEB51F6BEDB1001D117B /* Cell */,
 				EE1F8C141F6110A5001D473C /* LoginViewController.swift */,
 				EE1F8C211F612DBE001D473C /* RouteListViewController.swift */,
 				EEDA462A1F62A42000B14CAC /* Googlemaps */,
@@ -256,8 +327,18 @@
 			children = (
 				EEDA46301F62B96D00B14CAC /* UILabel+Helper.swift */,
 				EEB1FF3D1F63E67100ED190D /* Location+Helper.swift */,
+				EEE75F421F6BB185005667A9 /* UIColor+Helper.swift */,
 			);
 			name = Extension;
+			sourceTree = "<group>";
+		};
+		EEE75F3D1F6BAA2C005667A9 /* IBDesignable */ = {
+			isa = PBXGroup;
+			children = (
+				EEE75F3E1F6BAC7D005667A9 /* IBDButton+Design.swift */,
+				EEE75F401F6BAD5A005667A9 /* IBDTextField+Design.swift */,
+			);
+			name = IBDesignable;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -378,6 +459,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE0FD3041F6279ED00E3A123 /* GooglePlaceMarkerInfo.xib in Resources */,
+				0E67AEB41F6BEDA8001D117B /* RouteListTableViewCell.xib in Resources */,
 				EE1F8BED1F6108A9001D473C /* LaunchScreen.storyboard in Resources */,
 				EE1F8BEA1F6108A9001D473C /* Assets.xcassets in Resources */,
 				EE1F8C1B1F61117E001D473C /* GoogleMaps.storyboard in Resources */,
@@ -570,11 +652,21 @@
 				EEDA46311F62B96D00B14CAC /* UILabel+Helper.swift in Sources */,
 				EEDA46281F62A33B00B14CAC /* MapMainViewController.swift in Sources */,
 				EE1F8C151F6110A5001D473C /* LoginViewController.swift in Sources */,
+				EEE75F411F6BAD5A005667A9 /* IBDTextField+Design.swift in Sources */,
+				0E36569D1F6CE71100B3BA64 /* NetworkManager.swift in Sources */,
 				EE0FD3061F627B0300E3A123 /* GooglePlaceMarkerInfo.swift in Sources */,
 				EEB1FF3E1F63E67100ED190D /* Location+Helper.swift in Sources */,
+				0E36569C1F6CE71100B3BA64 /* ApplicationNetworkHandler.swift in Sources */,
+				EEE75F3F1F6BAC7D005667A9 /* IBDButton+Design.swift in Sources */,
 				EE1F8C201F612C1F001D473C /* MapViewController.swift in Sources */,
+				0E3656971F6CE67500B3BA64 /* Connectivity.swift in Sources */,
+				EEE75F431F6BB185005667A9 /* UIColor+Helper.swift in Sources */,
+				0E3656A71F6CEAC500B3BA64 /* TripList.swift in Sources */,
+				0E67AEB31F6BEDA8001D117B /* RouteListTableViewCell.swift in Sources */,
+				0E3656981F6CE67500B3BA64 /* Constants.swift in Sources */,
 				EE1F8C221F612DBE001D473C /* RouteListViewController.swift in Sources */,
 				EE1F8BE31F6108A9001D473C /* AppDelegate.swift in Sources */,
+				0E3656A21F6CEA4700B3BA64 /* TripListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

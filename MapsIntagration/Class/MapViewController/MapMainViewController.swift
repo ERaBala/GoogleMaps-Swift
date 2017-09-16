@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MapMainViewController: UIViewController {
+class MapMainViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var OrigenTextField      : UITextField!
     @IBOutlet weak var DestinationTextField : UITextField!
@@ -17,17 +17,33 @@ class MapMainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MapMainViewController.dismissKeyboard))
         
+        self.OrigenTextField.text = UserDefaults.standard.string(forKey: "from")
+        self.DestinationTextField.text = UserDefaults.standard.string(forKey: "to")
+        UserDefaults.standard.string(forKey: "to")
+        self.OrigenTextField.delegate = self
+        self.DestinationTextField.delegate = self
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MapMainViewController.dismissKeyboard))
+        self.navigationItem.title = "Map"
         //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
+         ShowDirections()
         
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == OrigenTextField {
+            DestinationTextField.becomeFirstResponder()
+        }else if textField == DestinationTextField {
+             self.view.endEditing(true)
+              ShowDirections()
+        }
+        return true
+        
+    }
     
-    @IBAction func ShowDirections(_ sender: Any) {
+    func ShowDirections(){
         
         guard let origen = self.OrigenTextField.text, let destination = self.DestinationTextField.text, origen.characters.count > 2, destination.characters.count > 2  else {
             print("Enter the Text field Values")

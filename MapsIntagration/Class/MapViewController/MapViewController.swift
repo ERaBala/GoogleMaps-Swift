@@ -43,7 +43,10 @@ class MapViewController: UIViewController {
         
         // Set Map as Default Location
         setDefaultMapLocation()
-        
+        if CLLocationManager.locationServicesEnabled()
+            && CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse {
+            mapUIView.isMyLocationEnabled = true
+        }
         placesClient = GMSPlacesClient.shared()
         LoadingTextLabel.animateType(newText: "Loading ...", characterDelay: 1.0)
         NotificationCenter.default.addObserver(forName:NCName, object:nil, queue:nil, using:catchNotification)
