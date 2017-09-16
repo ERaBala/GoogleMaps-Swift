@@ -13,6 +13,7 @@ class RouteListViewController: UIViewController {
     var tripViewModel = TripListViewModel()
     @IBOutlet weak var tableView: UITableView!
     var tripListArray = [TripList]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Route List"
@@ -37,7 +38,6 @@ class RouteListViewController: UIViewController {
 }
 
 extension RouteListViewController: UITableViewDelegate, UITableViewDataSource{
-    
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print(self.tripListArray.count)
         return self.tripListArray.count

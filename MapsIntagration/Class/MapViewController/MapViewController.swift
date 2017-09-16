@@ -48,7 +48,7 @@ class MapViewController: UIViewController {
             mapUIView.isMyLocationEnabled = true
         }
         placesClient = GMSPlacesClient.shared()
-        LoadingTextLabel.animateType(newText: "Loading ...", characterDelay: 1.0)
+        LoadingTextLabel.animateType(newText: "Map Loading ...", characterDelay: 1.0)
         NotificationCenter.default.addObserver(forName:NCName, object:nil, queue:nil, using:catchNotification)
         
     }
@@ -144,7 +144,8 @@ class MapViewController: UIViewController {
         
         origen      = origen.replacingOccurrences(of: " ", with: "+")
         destination = destination.replacingOccurrences(of: " ", with: "+")
-        
+        print(origen)
+        print(destination)
         let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origen)&destination=\(destination)&mode=driving"
         
         Alamofire.request(url).responseJSON { response in
@@ -156,18 +157,34 @@ class MapViewController: UIViewController {
             
             let json = JSON(data: response.data!)
             let routes = json["routes"].arrayValue
-            
+            print(json)
             // print route using Polyline
             for route in routes
             {
                 let routeOverviewPolyline = route["overview_polyline"].dictionary
                 let points = routeOverviewPolyline?["points"]?.stringValue
+                let getLegs = route["legs"].arrayValue
                 let path = GMSPath.init(fromEncodedPath: points!)
-                
                 let polyline = GMSPolyline.init(path: path)
                 polyline.strokeWidth = 4
                 polyline.strokeColor = UIColor.red
                 polyline.map = self.mapUIView
+                    for getLeg in getLegs {
+                        let endLoc = getLeg["end_location"].dictionary
+                        let sartLoc = getLeg["start_location"].dictionary
+                        let startLat = sartLoc?["lat"]?.double
+                        let satrtLon = sartLoc?["lng"]?.double
+                        let endLat = endLoc?["lat"]?.double
+                        let endLon = endLoc?["lng"]?.double
+                let markerstart     = GMSMarker()
+                markerstart.map      = self.mapUIView
+                markerstart.icon     = UIImage(named: "Map-Pin")!
+                markerstart.position = CLLocationCoordinate2D(latitude: startLat!, longitude: satrtLon!)
+                let markerend      = GMSMarker()
+                markerend.map      = self.mapUIView
+                markerend.icon     = UIImage(named: "Map-Pin")!
+                markerend.position = CLLocationCoordinate2D(latitude: endLat!, longitude: endLon!)
+                }
             }
             
         }
@@ -189,14 +206,14 @@ extension MapViewController: CLLocationManagerDelegate {
             mapUIView.camera    = camera
             mapUIView.mapType   = .normal
             
-            let marker      = GMSMarker()
-            marker.map      = mapUIView
-            marker.icon     = UIImage(named: "Map-Pin")!
-            marker.position = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+           // let marker      = GMSMarker()
+           // marker.map      = mapUIView
+           // marker.icon     = UIImage(named: "Map-Pin")!
+            //marker.position = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
             
-            getLogationAddress(lat: location.coordinate.latitude, long: location.coordinate.longitude) { (address) in
-                self.AddressValues = address
-            }
+            //getLogationAddress(lat: location.coordinate.latitude, long: location.coordinate.longitude) { (address) in
+            //    self.AddressValues = address
+            //}
             
         } else {
             mapUIView.animate(to: camera)
